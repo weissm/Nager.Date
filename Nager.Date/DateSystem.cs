@@ -228,7 +228,8 @@ namespace Nager.Date
         public static bool IsOfficialPublicHolidayByCounty(DateTime date, CountryCode countryCode, string countyCode)
         {
             var items = GetPublicHoliday(countryCode, date.Year);
-            return items.Where(o => o.Date.Date == date.Date && o.Counties.Contains(countyCode) && o.CountyOfficialHoliday).Any();
+            // in case of null, default is assumed
+            return items.Where(o => o.Date.Date == date.Date && (o.Counties == null || (o.Counties.Contains(countyCode) && o.CountyOfficialHoliday))).Any();
         }
 
         public static bool IsAdministrationPublicHolidayByCounty(DateTime date, CountryCode countryCode, string countyCode)
