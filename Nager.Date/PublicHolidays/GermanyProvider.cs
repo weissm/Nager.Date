@@ -37,6 +37,8 @@ namespace Nager.Date.PublicHolidays
             {
                 items.Add(new PublicHoliday(year, 10, 31, "Reformationstag", "Reformation Day", countryCode, null, new string[] { "BB", "MV", "SN", "ST", "TH" }));
             }
+            // handling of Prayer's day
+            items.Add(new PublicHoliday(year, 11, 16 + (2023 - year) % 7, "Buss- und Bettag", "Prayer's Day", CountryCode.DE, null, new string[] { "SN" }));
 
             return items.OrderBy(o => o.Date);
         }
